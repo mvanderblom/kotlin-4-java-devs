@@ -1,5 +1,8 @@
-package board
+package games.board
 
+import board.Cell
+import board.Direction.*
+import board.createSquareBoard
 import org.junit.Assert
 import org.junit.Test
 
@@ -31,12 +34,6 @@ class TestSquareBoard {
         Assert.assertEquals(null, cell)
     }
 
-    @Test(expected = IllegalArgumentException::class)
-    fun testNoCellException() {
-        val board = createSquareBoard(2)
-        board.getCell(3, 3)
-    }
-
     @Test
     fun testRow() {
         val board = createSquareBoard(2)
@@ -54,7 +51,7 @@ class TestSquareBoard {
     @Test
     fun testRowWrongRange() {
         val board = createSquareBoard(2)
-        val row = board.getRow(1, 1..10)
+        val row = board.getRow(1, 1..2)
         Assert.assertEquals("[(1, 1), (1, 2)]", row.asString())
     }
 
@@ -64,19 +61,10 @@ class TestSquareBoard {
         with(board) {
             val cell = getCellOrNull(1, 1)
             Assert.assertNotNull(cell)
-            Assert.assertEquals(null, cell!!.getNeighbour(Direction.UP))
-            Assert.assertEquals(null, cell.getNeighbour(Direction.LEFT))
-            Assert.assertEquals("(2, 1)", cell.getNeighbour(Direction.DOWN).asString())
-            Assert.assertEquals("(1, 2)", cell.getNeighbour(Direction.RIGHT).asString())
+            Assert.assertEquals(null, cell!!.getNeighbour(UP))
+            Assert.assertEquals(null, cell.getNeighbour(LEFT))
+            Assert.assertEquals("(2, 1)", cell.getNeighbour(DOWN).asString())
+            Assert.assertEquals("(1, 2)", cell.getNeighbour(RIGHT).asString())
         }
-    }
-
-    @Test
-    fun testSameCellInstances() {
-        val board = createSquareBoard(2)
-        val allCells1 = board.getAllCells()
-        val allCells2 = board.getAllCells()
-
-        allCells1.zip(allCells2).forEach { (c1, c2) -> Assert.assertSame(c1, c2) }
     }
 }
