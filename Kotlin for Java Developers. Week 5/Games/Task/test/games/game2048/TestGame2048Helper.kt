@@ -4,6 +4,7 @@ import org.junit.Assert
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
+import kotlin.math.exp
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestGame2048Helper {
