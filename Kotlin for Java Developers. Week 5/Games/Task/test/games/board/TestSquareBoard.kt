@@ -2,6 +2,7 @@ package games.board
 
 import board.Cell
 import board.Direction.*
+import board.createGameBoard
 import board.createSquareBoard
 import org.junit.Assert
 import org.junit.Test
@@ -57,7 +58,7 @@ class TestSquareBoard {
 
     @Test
     fun testNeighbour() {
-        val board = createSquareBoard(2)
+        val board = createGameBoard<Int?>(2)
         with(board) {
             val cell = getCellOrNull(1, 1)
             Assert.assertNotNull(cell)

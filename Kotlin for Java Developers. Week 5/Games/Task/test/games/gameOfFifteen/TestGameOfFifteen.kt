@@ -86,4 +86,12 @@ class TestGameOfFifteen {
         Assert.assertTrue("The player should win when the numbers are in order",
                 game.hasWon())
     }
+
+    @Test
+    fun testNotWinning() {
+        val game = newGameOfFifteen()
+        game.initialize()
+        Assert.assertFalse("The player shouldn't win a newly created game",
+                game.hasWon())
+    }
 }
