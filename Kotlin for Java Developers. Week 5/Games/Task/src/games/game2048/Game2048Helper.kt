@@ -22,17 +22,14 @@ fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
     val nonEmptyCells = this
             .filterNotNull();
 
-
     var i = 0
     while(i < nonEmptyCells.size) {
         val curVal = nonEmptyCells[i]
         if(nonEmptyCells.size > i + 1 && curVal == nonEmptyCells[i+1]) {
             result.add(merge(curVal))
             i++
-            println('c')
         } else {
             result.add(curVal);
-            println('c')
         }
         i++
     }
